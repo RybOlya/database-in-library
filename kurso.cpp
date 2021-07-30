@@ -8,20 +8,20 @@ using namespace std;
 #define u 2
 class BOOK {
 public:
-    int num;// реєстраційний номер книги
-    string author;// автор
-    string name;// назва книги
-    int year;// рік видання
-    string edition;// видавництво
-    int pages;// кількість сторінок
-    int  ticket;// номер читацького квитка (шість цифр) останнього читача
-    char av;// відмітка про знаходження книги у читача або в бібліотеці на даний момент
-    string user;// логін
-    int pass;// пароль
+    int num;// registration number of the book
+    string author;// author
+    string name;// bookname
+    int year;// year of publishment
+    string edition;// edition
+    int pages;// number of pages
+    int  ticket;// reader's ticket number (six digits) of the recent reader
+    char av;// location of the book (library or with the reader
+    string user;// login
+    int pass;// password
 }b;
 struct BOOK arr[n];
 struct BOOK temp;
-int count() {//визначення кількості рядків у файлі з обліковими записами
+int count() {//determine the number of lines in the accounts file
     ifstream Book("book.txt");
     int h = 0;
     string line;
@@ -30,7 +30,7 @@ int count() {//визначення кількості рядків у файлі з обліковими записами
     return h;
     Book.close();
 }
-void display() {//вивід всіх даних про книги;
+void display() {//display all book data
     ifstream Book("book.txt");
     int h = count();
     cout << "\xc9 N \xcd\xcb\xcd AUTHOR  \xcd\xcb\xcd   NAME   \xcd\xcb\xcd YEAR  \xcd\xcb\xcd  "<<
@@ -43,7 +43,7 @@ void display() {//вивід всіх даних про книги;
     cout << "\xc8\n";
     Book.close();
 }
-void find() {//пошук книги за певним параметром; 
+void find() {//find  a book by a certain parameter
     int f,k=0;
     ifstream Book("book.txt");
     int h = count();
@@ -138,7 +138,7 @@ void find() {//пошук книги за певним параметром;
     }
 
 }
-void sorting() {//сортування книг за певним параметром;
+void sorting() {//sort books by a certain parameter
     int s;
     ifstream Book("book.txt");
     int h = count();
@@ -243,7 +243,7 @@ void sorting() {//сортування книг за певним параметром;
     }
     Book.close();
     }
-void status() {//виведення списку книг, які перебувають на даний момент у читачів або в бібліотеці;
+void status() {//display a list of books that are currently with readers or in the library
     int s;
     ifstream Book("book.txt");
     int h = count();
@@ -276,7 +276,7 @@ void status() {//виведення списку книг, які перебувають на даний момент у читачі
         }
     Book.close();
 }
-void writefile() {//записування даних у файл;
+void writefile() {//write data to a file;
     ofstream Book("book.txt");
     int n1, y1, p1, t1, l;
     string a1, na1,e1;
@@ -309,7 +309,7 @@ void writefile() {//записування даних у файл;
         }
     Book.close();
     }
-void addfile() {//додавання нової книги в існуючий файл в кінець; 
+void addfile() {//adding a new book to an existing file at the end 
     ofstream Book;
     Book.open("book.txt", std::ios_base::app);
     int n1, y1, p1, t1, l;
@@ -348,7 +348,7 @@ void addfile() {//додавання нової книги в існуючий файл в кінець;
     }
     Book.close();
 }
-void delfile() {//видалення файлу; 
+void delfile() {//deleting file
     int c;
     char Book[] = "book.txt"; 
     cout << "  Are you sure you want to delete file? \n  1 - Yes   2 - No \n  Your choice: ";
@@ -360,7 +360,7 @@ void delfile() {//видалення файлу;
             cout << " \xf9 File deleted successfully \xf9 \n";
     }
 }
-void delrec() {//видалення даних про книгу;
+void delrec() {//deleting book record
     int h = count(),k=0,c;
     ifstream Users;
     ofstream temp;
@@ -396,7 +396,7 @@ void delrec() {//видалення даних про книгу;
         rename("temp.txt", "book.txt");
     }
 }
-void editrec() {//редагування даних про книгу; 
+void editrec() {//editing book record 
     string line, name, letter;
     int h = count(),c, number;
     ifstream Users;
@@ -535,7 +535,7 @@ void editrec() {//редагування даних про книгу;
     remove("book.txt");
     rename("temp.txt", "book.txt");
 }
-void booksed() {//меню редагування файлу з книгами
+void booksed() {//menu for editing books file
     int b;
     cout << "\xc9\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xbb\n\xba  "<<
         "Library book info:  \xba\n\xcc\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xb9" <<
@@ -569,7 +569,7 @@ void booksed() {//меню редагування файлу з книгами
         break;
     }
 }
-int countus() {//визначення кількості рядків у файлі з книгами
+int countus() {determine the number of lines in the users file
     ifstream Users("users.txt");
     int h = 0;
     string line;
@@ -578,7 +578,7 @@ int countus() {//визначення кількості рядків у файлі з книгами
     return h;
     Users.close();
 }
-void userdisplay() {//виведення списку з логінами 
+void userdisplay() {//display all users
     ifstream Users("users.txt");
     int h = countus();
     cout << "  USERS:  \n";
@@ -588,7 +588,7 @@ void userdisplay() {//виведення списку з логінами
     }
     Users.close();
 }
-void adduser() {// додавання нового користувача
+void adduser() {//add new user
     string us;
     int p,k=0;
     ofstream Users;
@@ -615,7 +615,7 @@ void adduser() {// додавання нового користувача
     Us.close();
     Users.close();
 }
-void edit() {// редагування облікового запису
+void edit() {// edit user
     string line, name, newus;
     int h = countus(),k=0, c;
     ifstream Users;
@@ -674,7 +674,7 @@ void edit() {// редагування облікового запису
         remove("users.txt");
         rename("temp.txt", "users.txt");
 }
-void delus() {// видалення облікового запису
+void delus() {// delete user
     string line, name;   
     int h = countus(),k=0,c;
     ifstream Users;
@@ -708,7 +708,7 @@ void delus() {// видалення облікового запису
         rename("temp.txt", "users.txt");
     }
 }
-void users() {// меню роботи з файлом облікових записів
+void users() {// menu for working with the users file 
     int b;
     cout << "\xc9\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xbb\n\xba "<<
         " Library book info:  \xba\n\xcc\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xb9" <<
@@ -735,7 +735,7 @@ void users() {// меню роботи з файлом облікових записів
         break;
     }
 }
-void menuus() {//модуль користувача
+void menuus() {//user module
     int c = 0;
     do {
         cout << "\xc9\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd"<<
@@ -765,7 +765,7 @@ void menuus() {//модуль користувача
         }
     } while (c != 5);
 }
-void books() {//меню роботи з файлом з книжками
+void books() {//menu for working with the books file
     int b;
     cout << "\xc9\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xbb\n\xba  " <<
         "Library book info:  \xba\n\xcc\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xb9" <<
@@ -785,7 +785,7 @@ void books() {//меню роботи з файлом з книжками
         break;
     }
 }
-void menuad() {// модуль адміністратора
+void menuad() {//administrator module
     int c = 0;
     do {
         cout << "\xc9\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd"<<
@@ -809,7 +809,7 @@ void menuad() {// модуль адміністратора
         }
     } while (c != 3);
 }
-int registration() {// реєстрація
+int registration() {//registration
     ifstream Users("users.txt");
     string login, line;
     int pass, o=0;
